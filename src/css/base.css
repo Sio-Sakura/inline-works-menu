@@ -227,7 +227,7 @@ a:focus-visible {
 	position: relative;
 	justify-content: flex-start;
 	align-items: center;
-	padding: 6rem 100px;
+	padding: 52px 100px; /* 上下72px→52px（-20px） */
 	font-family: 'Noto Serif JP', serif;
 }
 
@@ -237,7 +237,7 @@ a:focus-visible {
 
 .content__quote {
 	width: 75vw; /* 文章ブロックは画面幅の75% */
-	font-size: 45px; /* 1280px基準 */
+	font-size: 40px; /* 1280px基準 */
 	margin: 0;
 	text-align: center;
 	line-height: 1.5;
@@ -521,7 +521,7 @@ a:focus-visible {
 @media screen and (max-width: 600px) {
 	/* 横はみ出し防止：モバイルは余白を詰めて本文をコンテナ内に収める */
 	.content {
-		padding: 6rem 20px;
+		padding: 52px 20px;
 	}
 
 	.content__quote {
