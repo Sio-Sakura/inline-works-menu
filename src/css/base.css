@@ -236,8 +236,8 @@ a:focus-visible {
 }
 
 .content__quote {
-	width: 75vw; /* 文章ブロックは画面幅の75% */
-	font-size: 45px; /* 1280px基準 */
+	width: 80vw; /* 文章ブロックは画面幅の80% */
+	font-size: 40px; /* 1280px基準 */
 	margin: 0;
 	text-align: center;
 	line-height: 1.5;
