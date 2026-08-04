@@ -1,0 +1,651 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 12px;
+}
+
+body {
+	margin: 0;
+	--color-text: #715942;
+    --color-text-alt: #5a4939;
+    --color-alt: #e8c59e;
+	--color-text-button: #fff;
+    --color-bg: #060606;
+    --color-link: #e8c59e;
+    --color-link-hover: #e8c59e;
+	--color-deco: #292724;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+	font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+	background: transparent;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid red;
+	background: transparent;
+}
+
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+.js .oh {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+}
+
+.js .oh > span {
+	display: inline-block;
+	will-change: transform;
+}
+
+.frame {
+	z-index: 1000;
+	text-transform: uppercase;
+	position: relative;
+	text-align: left;
+	top: 0;
+	left: 0;
+	display: grid;
+	align-items: start;
+	align-content: space-between;
+	width: 100%;
+	padding: 60px 100px 60px;
+	grid-template-columns: 100%;
+	grid-template-areas: 'title'
+						'sub'
+						'links'
+						'author'
+						'credits';
+}
+
+.frame a {
+	font-weight: 700;
+}
+
+/* 左上に固定 */
+.frame__title,
+.js .frame__title.oh {
+	position: fixed;
+	top: 60px;
+	left: 100px;
+	font-size: 15px; /* 12px + 3px */
+	margin: 0;
+	font-weight: normal;
+	font-family: 'Lora', serif;
+	white-space: nowrap;
+}
+
+.frame__links {
+	grid-area: links;
+}
+
+/* どの画面幅でも画面基準で「中央・下端ライン」に固定
+   （.js .oh の position:relative に負けないよう強いセレクタも併記） */
+.frame__tagline,
+.js .frame__tagline.oh {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 70px; /* 60px + 10px */
+	margin: 0;
+	font-family: 'Lora', serif;
+	font-style: italic;
+	font-weight: 500;
+	font-size: 20px;
+	color: var(--color-alt);
+	white-space: nowrap;
+}
+
+.frame__links a:not(:last-child) {
+	margin-right: 1rem;
+}
+
+.frame__author {
+	grid-area: author;
+	margin: 1rem 0;
+}
+
+/* 右上に固定（メニュー表示時は「閉じる」と入れ替わる） */
+.frame__credits,
+.js .frame__credits.oh {
+	position: fixed;
+	top: 60px;
+	right: 100px;
+	font-size: 15px; /* 12px + 3px */
+	margin: 0;
+	color: var(--color-alt); /* 明るいアクセント色 */
+	font-family: 'Lora', serif;
+	white-space: nowrap;
+}
+
+.frame__category {
+	margin: 0;
+	grid-area: title;
+	justify-self: start;
+}
+
+.frame__close {
+	grid-area: title;
+	justify-self: end;
+	text-transform: uppercase;
+	font-family: 'Lora', serif; /* Exploreと同じ */
+	font-weight: bold;
+	cursor: pointer;
+	color: var(--color-text);
+}
+
+.frame__close span::before {
+	content: "\2715";
+	margin: 0 0.25rem 0;
+	vertical-align: top;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: calc(100vh - 13rem);
+	position: relative;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 6rem 100px;
+	font-family: 'Noto Serif JP', serif;
+}
+
+.content--menu {
+	pointer-events: none;
+}
+
+.content__quote {
+	width: 75vw; /* 文章ブロックは画面幅の75% */
+	font-size: 45px; /* 1280px基準 */
+	margin: 0;
+	text-align: center;
+	line-height: 1.5;
+	font-weight: 500;
+}
+
+.content__quote span.word {
+	display: inline-block;
+	will-change: transform, opacity;
+}
+
+.menu-item {
+	font-weight: 400;
+	position: relative;
+	display: inline-block;
+	text-indent: 0;
+	cursor: pointer;
+	z-index: 100;
+	pointer-events: auto;
+}
+
+.menu-item::after {
+	content: '';
+	position: absolute;
+	top: 89%;
+	left: 0;
+	width: 100%;
+	height: 0.375vw;
+	background: var(--color-alt);
+	z-index: -1;
+	transform: scale3d(0.001,1,1);
+	opacity: 0;
+	transform-origin: 100% 50%;
+	transition: transform 0.3s cubic-bezier(0.2,1,0.3,1), opacity 0.1s 0.2s linear;
+}
+
+.menu-item.menu-item--active::after,
+.content--menu .menu-item.menu-item--active:hover::after,
+.menu-item:hover::after {
+	opacity: 1;
+	transform: scale3d(1,1,1);
+	transform-origin: 0% 50%;
+	transition: transform 0.7s cubic-bezier(0.2,1,0.3,1), opacity 0.1s linear;
+}
+
+.content--menu .menu-item::after {
+	transform-origin: 0% 50%;
+}
+
+.content--menu .menu-item:hover::after {
+	transform: scale3d(0.15,1,1);
+}
+
+.content__quote .word {
+	text-indent: 0;
+}
+
+.menu-item span {
+	pointer-events: none;
+}
+
+.galleries {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.galleries__deco {
+	position: fixed;
+	bottom: 0; /* 全部見せる・下の隙間なし */
+	left: 0;
+	right: 0;
+	text-align: center; /* 中央配置（GSAPがtransformを使うのでleft/rightで中央化） */
+	color: var(--color-deco);
+	font-size: 7vw;
+	text-transform: uppercase;
+	white-space: nowrap;
+	line-height: 1;
+	pointer-events: none;
+	opacity: 0;
+	will-change: transform, opacity;
+	font-family: 'Lora', serif;
+	font-style: italic;
+
+}
+
+/* 元デモのボタン（白い輪郭の大きな円＋"+ Explore"）を左上に配置 */
+.galleries__button {
+	position: absolute;
+	width: 20vw;
+	height: 20vw;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 60px;
+	left: 100px;
+	z-index: 200;
+	color: var(--color-alt);
+	text-transform: uppercase;
+	font-family: 'Lora', serif;
+	font-weight: 600;
+	font-size: 1.25rem; /* 元のサイズ */
+	cursor: pointer;
+	clip-path: circle(calc(50% + 2px) at 50% 50%);
+	border: 1px solid var(--color-alt);
+	border-radius: 50%;
+	background: rgba(6, 6, 6, 0.55);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	opacity: 0;
+}
+
+.galleries__button:hover {
+	background: var(--color-alt);
+	color: var(--color-bg);
+}
+
+.galleries__button::before {
+	content: '+';
+	margin-right: 0.5rem;
+}
+
+.gallery--current ~ .galleries__button {
+	pointer-events: auto;
+}
+
+.gallery {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap; /* 入り切らない分は次の行へ（全デザインを見せる） */
+	overflow: hidden;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	isolation: isolate;
+	height: 0;
+}
+
+.gallery--current {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+}
+
+.gallery__img {
+	flex: none;
+	width: 21.6vw; /* 18vwの1.2倍 */
+	height: auto;
+	margin: -2vh -1vw; /* 行同士も少し重ねて縦に収める */
+	border: 1px solid rgba(232, 197, 158, 0.25); /* アクセント色の薄い枠でカードを分離 */
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55); /* 影で「重ねたカードの束」に見せる */
+	will-change: transform, opacity;
+}
+
+/* 4枚周期の波：低い→突き出る→中間→低い（上がって下がる） */
+.gallery__img:nth-child(4n+1) {
+	margin-top: 1vh;
+}
+
+.gallery__img:nth-child(4n+2) {
+	margin-top: -6vh;
+}
+
+.gallery__img:nth-child(4n+3) {
+	margin-top: -3vh;
+}
+
+.gallery__img:nth-child(4n) {
+	margin-top: 1vh;
+}
+
+/* HP（6枚）：1列の山型。1→4で急な斜めに積み上がり、5→6で下る */
+#gallery-1 {
+	flex-wrap: nowrap;
+}
+
+#gallery-1 .gallery__img {
+	width: 19.8vw; /* 1.1倍 */
+	margin-left: -1.6vw; /* 6枚を1列に収める重なり */
+	margin-right: -1.6vw;
+}
+
+/* 山型：1段16vh */
+#gallery-1 .gallery__img:nth-child(1) { margin-top: 24vh; }
+#gallery-1 .gallery__img:nth-child(2) { margin-top: 8vh; }
+#gallery-1 .gallery__img:nth-child(3) { margin-top: -8vh; }
+#gallery-1 .gallery__img:nth-child(4) { margin-top: -24vh; }
+#gallery-1 .gallery__img:nth-child(5) { margin-top: -8vh; }
+#gallery-1 .gallery__img:nth-child(6) { margin-top: 8vh; }
+
+/* LP（10枚）：1列のジグザグ。1→4で上げ、5→7で下げ、8→10で上げ */
+#gallery-2 {
+	flex-wrap: nowrap;
+}
+
+#gallery-2 .gallery__img {
+	width: 19.8vw; /* HPと同じ1.1倍 */
+	margin-left: -2.8vw; /* 7枚を1列に収める重なり */
+	margin-right: -2.8vw;
+}
+
+/* 7枚：1→4で上昇、5→6で下降、7で再上昇：1段16vh */
+#gallery-2 .gallery__img:nth-child(1) { margin-top: 24vh; }
+#gallery-2 .gallery__img:nth-child(2) { margin-top: 8vh; }
+#gallery-2 .gallery__img:nth-child(3) { margin-top: -8vh; }
+#gallery-2 .gallery__img:nth-child(4) { margin-top: -24vh; }
+#gallery-2 .gallery__img:nth-child(5) { margin-top: -8vh; }
+#gallery-2 .gallery__img:nth-child(6) { margin-top: 8vh; }
+#gallery-2 .gallery__img:nth-child(7) { margin-top: -8vh; }
+
+@media screen and (min-width: 53em) {
+	.frame {
+		pointer-events: none;
+		position: fixed;
+		height: 100vh;
+		grid-template-columns: 20vw 36vw 1fr auto;
+		grid-template-rows: auto auto auto;
+		grid-template-areas: 'title links category close'
+							'sub ... ... ...'
+							'author ad ad credits';
+	}
+	.frame__title {
+		margin: 0;
+	}
+	.frame__links {
+		padding: 0;
+	}
+	.frame__author {
+		align-self: end;
+		justify-self: start;
+		margin: 0;
+	}
+	.frame__credits {
+		justify-self: end;
+		align-self: end;
+	}
+	.frame__close {
+		grid-area: close;
+	}
+	/* .js .oh の position: relative より優先させるためセレクタを強くしている */
+	.frame__category {
+		grid-area: category;
+		justify-self: start;
+		margin: 0;
+	}
+	.frame a, 
+	.frame button {
+		pointer-events: auto;
+	}
+	.content {
+		height: 100vh;
+		justify-content: center;
+	}
+}
+
+/* 文字サイズのブレークポイント（STUDIO基準：1280 / 1140 / 840 / 540） */
+@media screen and (max-width: 1140px) {
+	.content__quote {
+		font-size: 36px;
+	}
+}
+
+@media screen and (max-width: 840px) {
+	.content__quote {
+		font-size: 29px;
+	}
+
+	/* キーワードだけ本文より大きく */
+	.menu-item {
+		font-size: 32px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	/* 横はみ出し防止：モバイルは余白を詰めて本文をコンテナ内に収める */
+	.content {
+		padding: 6rem 20px;
+	}
+
+	.content__quote {
+		width: 100%;
+	}
+
+	/* NOT BY CHANCEと@DESIGN BY SHIOを上下に重ねて中央配置 */
+	.frame__title,
+	.js .frame__title.oh {
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+
+	.frame__credits,
+	.js .frame__credits.oh {
+		top: calc(60px + 24px);
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.content__quote {
+		font-size: 25px;
+	}
+
+	/* 540px以下ではキーワードも本文と同じサイズに戻す */
+	.menu-item {
+		font-size: inherit;
+	}
+}
+
+/* 540px以下：写真は縦並びで全部表示。Closeの20px下から始まり、被りは10pxだけ。下にスクロールして見る */
+@media screen and (max-width: 540px) {
+	.frame {
+		padding: 60px 20px;
+	}
+
+	/* スクロールしてもCloseとExploreは画面に固定 */
+	.frame__close,
+	.js .frame__close.oh {
+		position: fixed;
+		top: 60px;
+		right: 20px;
+	}
+
+	.galleries__button {
+		position: fixed; /* スクロールに追従 */
+		width: 28vw; /* 20vwの1.4倍 */
+		height: 28vw;
+		top: calc(235px - 28vw); /* 円の下端が写真の先頭(215px)に20pxかぶる */
+		left: 95px; /* 100pxから5px左へ */
+	}
+
+	.galleries {
+		height: auto;
+		min-height: 100vh;
+	}
+
+	.gallery--current {
+		position: relative;
+		height: auto;
+		padding: 215px 0 60px; /* 上部固定の2つの言葉（〜185px）の30px下から写真開始 */
+	}
+
+
+	#gallery-1,
+	#gallery-2 {
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+
+	#gallery-1 .gallery__img,
+	#gallery-2 .gallery__img {
+		width: 66vw;
+		position: relative;
+	}
+
+	/* PC用の山型margin-top指定（nth-child）より優先させるため、同格のnth-child(n)で全カードを上書き */
+	#gallery-1 .gallery__img:nth-child(n),
+	#gallery-2 .gallery__img:nth-child(n) {
+		margin: -20px 0 0; /* 画像ごとの重なりは20px */
+	}
+
+	#gallery-1 .gallery__img:first-child,
+	#gallery-2 .gallery__img:first-child {
+		margin-top: 0;
+	}
+
+	/* 蛇行配置：1,2,3で左→中央→右へ下り、4,5,6で中央→左へ折り返す（7枚目はまた右へ） */
+	#gallery-1 .gallery__img:nth-child(4n+1),
+	#gallery-2 .gallery__img:nth-child(4n+1) {
+		left: -13vw;
+	}
+
+	#gallery-1 .gallery__img:nth-child(4n+2),
+	#gallery-2 .gallery__img:nth-child(4n+2) {
+		left: 0;
+	}
+
+	#gallery-1 .gallery__img:nth-child(4n+3),
+	#gallery-2 .gallery__img:nth-child(4n+3) {
+		left: 13vw;
+	}
+
+	#gallery-1 .gallery__img:nth-child(4n),
+	#gallery-2 .gallery__img:nth-child(4n) {
+		left: 0;
+	}
+}
+
+/* 541〜840pxのときだけ写真を1.3倍に */
+@media screen and (min-width: 541px) and (max-width: 840px) {
+	#gallery-1 .gallery__img {
+		width: 23.4vw; /* 18vwの1.3倍 */
+		margin-left: -3.4vw; /* 6枚を1列に収める重なり */
+		margin-right: -3.4vw;
+	}
+
+	#gallery-2 .gallery__img {
+		width: 23.4vw;
+		margin-left: -4.6vw; /* 7枚を1列に収める重なり */
+		margin-right: -4.6vw;
+	}
+}
