@@ -531,15 +531,16 @@ a:focus-visible {
 		pointer-events: auto;
 	}
 
-	/* 横はみ出し防止：モバイルは余白を詰めて本文をコンテナ内に収める */
+	/* 本文は幅80%・左右の余白は最低40px確保 */
 	.content {
 		height: 100vh;
 		justify-content: center;
-		padding: 52px 20px;
+		padding: 52px 40px;
 	}
 
 	.content__quote {
-		width: 100%;
+		width: 80vw;
+		max-width: 100%;
 	}
 
 	/* NOT BY CHANCEと@DESIGN BY SHIOを上下に重ねて中央配置（上：NOT BY CHANCE、下：@DESIGN BY SHIO）。上の隙間120px */
@@ -563,6 +564,24 @@ a:focus-visible {
 @media screen and (max-width: 540px) {
 	.content__quote {
 		font-size: 25px;
+	}
+
+	/* 上の英語2行は20px。2行目は重ならないよう下げる */
+	.frame__title,
+	.js .frame__title.oh {
+		font-size: 20px;
+	}
+
+	.frame__credits,
+	.js .frame__credits.oh {
+		font-size: 20px;
+		top: calc(120px + 32px);
+	}
+
+	/* 一番下の英語は20px（元のサイズ） */
+	.frame__tagline,
+	.js .frame__tagline.oh {
+		font-size: 20px;
 	}
 
 	/* 540px以下ではキーワードも本文と同じサイズに戻す */
