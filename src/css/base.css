@@ -455,7 +455,7 @@ a:focus-visible {
 #gallery-2 .gallery__img:nth-child(6) { margin-top: 8vh; }
 #gallery-2 .gallery__img:nth-child(7) { margin-top: -8vh; }
 
-@media screen and (min-width: 53em) {
+@media screen and (min-width: 601px) {
 	.frame {
 		pointer-events: none;
 		position: fixed;
@@ -519,8 +519,22 @@ a:focus-visible {
 }
 
 @media screen and (max-width: 600px) {
+	/* 本文をPCと同じく画面の上下中央に置く（フレームを流れから外す） */
+	.frame {
+		position: fixed;
+		height: 100vh;
+		pointer-events: none;
+	}
+
+	.frame a,
+	.frame button {
+		pointer-events: auto;
+	}
+
 	/* 横はみ出し防止：モバイルは余白を詰めて本文をコンテナ内に収める */
 	.content {
+		height: 100vh;
+		justify-content: center;
 		padding: 52px 20px;
 	}
 
@@ -528,9 +542,10 @@ a:focus-visible {
 		width: 100%;
 	}
 
-	/* NOT BY CHANCEと@DESIGN BY SHIOを上下に重ねて中央配置 */
+	/* NOT BY CHANCEと@DESIGN BY SHIOを上下に重ねて中央配置（上：NOT BY CHANCE、下：@DESIGN BY SHIO）。上の隙間120px */
 	.frame__title,
 	.js .frame__title.oh {
+		top: 120px;
 		left: 50%;
 		right: auto;
 		transform: translateX(-50%);
@@ -538,7 +553,7 @@ a:focus-visible {
 
 	.frame__credits,
 	.js .frame__credits.oh {
-		top: calc(60px + 24px);
+		top: calc(120px + 24px);
 		left: 50%;
 		right: auto;
 		transform: translateX(-50%);
