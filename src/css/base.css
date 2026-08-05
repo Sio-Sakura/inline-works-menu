@@ -569,7 +569,7 @@ a:focus-visible {
 
 	.content__quote {
 		font-size: 22px;
-		width: 100%;
+		width: 90vw; /* 画面幅の90% */
 	}
 
 	/* 上の英語2行は20px。2行目は重ならないよう下げる */
@@ -612,9 +612,9 @@ a:focus-visible {
 
 	.galleries__button {
 		position: fixed; /* スクロールに追従 */
-		width: 28vw; /* 20vwの1.4倍 */
-		height: 28vw;
-		top: calc(235px - 28vw); /* 円の下端が写真の先頭(215px)に20pxかぶる */
+		width: 33.6vw; /* さらに1.2倍 */
+		height: 33.6vw;
+		top: calc(235px - 33.6vw); /* 円の下端が写真の先頭に20pxかぶる */
 		left: 24px; /* 左端から24px */
 	}
 
