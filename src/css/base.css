@@ -572,22 +572,27 @@ a:focus-visible {
 		width: 90vw; /* 画面幅の90% */
 	}
 
-	/* 上の英語2行は20px。2行目は重ならないよう下げる */
+	/* 540px以下は上下入れ替え：英語2行（NOT BY CHANCE／@DESIGN BY SHIO）は下へ */
 	.frame__title,
 	.js .frame__title.oh {
 		font-size: 20px;
+		top: auto;
+		bottom: calc(120px + 32px);
 	}
 
 	.frame__credits,
 	.js .frame__credits.oh {
 		font-size: 20px;
-		top: calc(120px + 32px);
+		top: auto;
+		bottom: 120px;
 	}
 
-	/* 一番下の英語は20px（元のサイズ） */
+	/* EVERY NUMBER…は上へ */
 	.frame__tagline,
 	.js .frame__tagline.oh {
 		font-size: 20px;
+		bottom: auto;
+		top: 120px;
 	}
 
 	/* 540px以下ではキーワードも本文と同じサイズに戻す */
