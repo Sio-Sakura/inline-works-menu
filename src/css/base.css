@@ -562,8 +562,14 @@ a:focus-visible {
 }
 
 @media screen and (max-width: 540px) {
+	/* 540px以下だけ：本文の左右余白を24pxに */
+	.content {
+		padding: 52px 24px;
+	}
+
 	.content__quote {
 		font-size: 22px;
+		width: 100%;
 	}
 
 	/* 上の英語2行は20px。2行目は重ならないよう下げる */
