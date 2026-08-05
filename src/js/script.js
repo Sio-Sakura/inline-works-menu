@@ -467,7 +467,7 @@ const positionEnglishMobile = () => {
 	}
 	const q = document.querySelector('.content__quote').getBoundingClientRect();
 	tag.style.bottom = 'auto';
-	tag.style.top = q.top - 60 - tag.offsetHeight + 'px';
+	tag.style.top = q.top - 40 - tag.offsetHeight + 'px';
 	title.style.bottom = 'auto';
 	title.style.top = q.bottom + 60 + 'px';
 	credits.style.bottom = 'auto';

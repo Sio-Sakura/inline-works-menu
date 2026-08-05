@@ -575,14 +575,14 @@ a:focus-visible {
 	/* 540px以下は上下入れ替え：英語2行（NOT BY CHANCE／@DESIGN BY SHIO）は下へ */
 	.frame__title,
 	.js .frame__title.oh {
-		font-size: 20px;
+		font-size: 18px;
 		top: auto;
 		bottom: calc(120px + 32px);
 	}
 
 	.frame__credits,
 	.js .frame__credits.oh {
-		font-size: 20px;
+		font-size: 18px;
 		top: auto;
 		bottom: 120px;
 	}
