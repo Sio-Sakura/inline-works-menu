@@ -563,7 +563,7 @@ a:focus-visible {
 
 @media screen and (max-width: 540px) {
 	.content__quote {
-		font-size: 25px;
+		font-size: 22px;
 	}
 
 	/* 上の英語2行は20px。2行目は重ならないよう下げる */
@@ -609,7 +609,7 @@ a:focus-visible {
 		width: 28vw; /* 20vwの1.4倍 */
 		height: 28vw;
 		top: calc(235px - 28vw); /* 円の下端が写真の先頭(215px)に20pxかぶる */
-		left: 95px; /* 100pxから5px左へ */
+		left: 55px; /* さらに40px左へ */
 	}
 
 	.galleries {
