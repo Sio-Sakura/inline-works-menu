@@ -151,7 +151,7 @@ class Menu {
 		const naturalLeft = target.getBoundingClientRect().left - (gsap.getProperty(target, 'x') || 0);
 		// モバイル：右揃え（Closeと同じ右端20pxに合わせる）
 		if (winsize.width <= 540) {
-			return (winsize.width - 20 - target.offsetWidth) - naturalLeft;
+			return (winsize.width - 24 - target.offsetWidth) - naturalLeft;
 		}
 		// PC：中央下に横並び（間隔30px）
 		const GAP = 30;

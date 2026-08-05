@@ -601,7 +601,7 @@ a:focus-visible {
 	.js .frame__close.oh {
 		position: fixed;
 		top: 60px;
-		right: 20px;
+		right: 24px;
 	}
 
 	.galleries__button {
@@ -609,7 +609,7 @@ a:focus-visible {
 		width: 28vw; /* 20vwの1.4倍 */
 		height: 28vw;
 		top: calc(235px - 28vw); /* 円の下端が写真の先頭(215px)に20pxかぶる */
-		left: 55px; /* さらに40px左へ */
+		left: 24px; /* 左端から24px */
 	}
 
 	.galleries {
