@@ -453,33 +453,9 @@ class Menu {
 	}
 }
 
-// 540px以下のみ：英文を「日本語本文から上下60px」の位置に自動配置
-const positionEnglishMobile = () => {
-	const tag = document.querySelector('.frame__tagline');
-	const title = document.querySelector('.frame__title');
-	const credits = document.querySelector('.frame__credits');
-	if (winsize.width > 540) {
-		[tag, title, credits].forEach(el => {
-			el.style.top = '';
-			el.style.bottom = '';
-		});
-		return;
-	}
-	const q = document.querySelector('.content__quote').getBoundingClientRect();
-	tag.style.bottom = 'auto';
-	tag.style.top = q.top - 40 - tag.offsetHeight + 'px';
-	title.style.bottom = 'auto';
-	title.style.top = q.bottom + 60 + 'px';
-	credits.style.bottom = 'auto';
-	credits.style.top = q.bottom + 60 + title.offsetHeight + 8 + 'px';
-};
-window.addEventListener('resize', positionEnglishMobile);
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(positionEnglishMobile);
-
 // initialize: 文章を1文字ずつ分割 → 画像読み込みを待つ → 開始
 splitQuoteToChars(document.querySelector('.content__quote'));
 preloadImages('.gallery__img').then(() => {
 	document.body.classList.remove('loading');
 	new Menu();
-	positionEnglishMobile();
 });
