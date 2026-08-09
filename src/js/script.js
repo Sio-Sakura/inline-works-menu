@@ -313,9 +313,6 @@ class Menu {
 		// モバイル：スクロール位置を先頭に戻してから、固定を解除して滑らかに戻す
 		if (winsize.width <= 540) {
 			window.scrollTo(0, 0);
-			// 枠内スクロールも先頭に戻す
-			const gal = this.menuItems[this.currentMenuItem].gallery.DOM.el;
-			if (gal) gal.scrollTop = 0;
 			this.unpinMenuItemsMobile();
 		}
 
@@ -348,7 +345,7 @@ class Menu {
 		this.DOM.menuItems.forEach((item, i) => {
 			const r = rects[i];
 			gsap.set(item, { x: 0, y: 0 });
-			item.style.position = 'absolute';
+			item.style.position = 'fixed';
 			item.style.top = r.top + 'px';
 			item.style.left = r.left + 'px';
 			item.style.whiteSpace = 'nowrap';
