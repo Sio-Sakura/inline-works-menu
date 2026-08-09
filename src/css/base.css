@@ -144,7 +144,7 @@ a:focus-visible {
 /* 左上に固定 */
 .frame__title,
 .js .frame__title.oh {
-	position: absolute;
+	position: fixed;
 	top: 120px;
 	left: 100px;
 	font-size: 15px; /* 12px + 3px */
@@ -162,7 +162,7 @@ a:focus-visible {
    （.js .oh の position:relative に負けないよう強いセレクタも併記） */
 .frame__tagline,
 .js .frame__tagline.oh {
-	position: absolute;
+	position: fixed;
 	left: 50%;
 	transform: translateX(-50%);
 	bottom: 120px; /* 下の英語の下を120px空ける */
@@ -187,7 +187,7 @@ a:focus-visible {
 /* 右上に固定（メニュー表示時は「閉じる」と入れ替わる） */
 .frame__credits,
 .js .frame__credits.oh {
-	position: absolute;
+	position: fixed;
 	top: 120px;
 	right: 100px;
 	font-size: 15px; /* 12px + 3px */
@@ -362,7 +362,7 @@ a:focus-visible {
 }
 
 .galleries__deco {
-	position: absolute;
+	position: fixed;
 	bottom: 0; /* 全部見せる・下の隙間なし */
 	left: 0;
 	right: 0;
@@ -517,7 +517,7 @@ a:focus-visible {
 @media screen and (min-width: 601px) {
 	.frame {
 		pointer-events: none;
-		position: absolute;
+		position: fixed;
 		height: 100vh;
 		grid-template-columns: 20vw 36vw 1fr auto;
 		grid-template-rows: auto auto auto;
@@ -580,7 +580,7 @@ a:focus-visible {
 @media screen and (max-width: 600px) {
 	/* 本文をPCと同じく画面の上下中央に置く（フレームを流れから外す） */
 	.frame {
-		position: absolute;
+		position: fixed;
 		height: 100vh;
 		height: 100svh; /* アドレスバー伸縮でガタつかない固定基準 */
 		pointer-events: none;
@@ -623,9 +623,24 @@ a:focus-visible {
 }
 
 @media screen and (max-width: 540px) {
+	/* スマホだけ：iframe内スクロールのカクつき対策で固定をやめてページ一体に */
+	.frame {
+		position: absolute;
+	}
+
+	.frame__title,
+	.js .frame__title.oh,
+	.frame__credits,
+	.js .frame__credits.oh,
+	.frame__tagline,
+	.js .frame__tagline.oh {
+		position: absolute;
+	}
+
 	/* スマホだけ明るめのグレー（100%不透明） */
 	.galleries__deco {
 		color: #5E5D5D;
+		position: absolute;
 	}
 
 	/* 540px以下だけ：本文の左右余白を24pxに */
