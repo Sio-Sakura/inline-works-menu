@@ -194,6 +194,7 @@ a:focus-visible {
 	margin: 0;
 	color: var(--color-alt); /* 明るいアクセント色 */
 	font-family: 'Lora', serif;
+	letter-spacing: 0.08em; /* 文字間隔を少し開ける */
 	white-space: nowrap;
 }
 
@@ -209,6 +210,8 @@ a:focus-visible {
 	text-transform: uppercase;
 	font-family: 'Lora', serif; /* Exploreと同じ */
 	font-weight: bold;
+	font-size: 13px; /* 12px + 1px */
+	letter-spacing: 0.1em; /* Exploreと同じ文字間隔 */
 	cursor: pointer;
 	color: var(--color-text);
 }
@@ -364,7 +367,7 @@ a:focus-visible {
 	left: 0;
 	right: 0;
 	text-align: center; /* 中央配置（GSAPがtransformを使うのでleft/rightで中央化） */
-	color: var(--color-deco);
+	color: #5E5D5D;
 	font-size: 7vw;
 	text-transform: uppercase;
 	white-space: nowrap;
@@ -394,6 +397,7 @@ a:focus-visible {
 	font-family: 'Lora', serif;
 	font-weight: 600;
 	font-size: 1.25rem; /* 元のサイズ */
+	letter-spacing: 0.1em; /* 文字間隔を少し開ける */
 	cursor: pointer;
 	clip-path: circle(calc(50% + 2px) at 50% 50%);
 	border: 1px solid var(--color-alt);
