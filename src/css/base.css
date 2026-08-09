@@ -382,6 +382,7 @@ a:focus-visible {
 
 .galleries__deco-slash {
 	font-size: calc(7vw - 5px); /* 中黒だけ5px小さく */
+	vertical-align: -0.05em; /* 日本語記号は英字より浮くので少し下げて中央に */
 }
 
 /* 元デモのボタン（白い輪郭の大きな円＋"+ Explore"）を左上に配置 */
