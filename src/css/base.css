@@ -628,9 +628,9 @@ a:focus-visible {
 }
 
 @media screen and (max-width: 540px) {
-	/* 文章画面では内側スクロールを完全にロックして、スクロール操作を親ページ（STUDIO側）へ渡す。
-	   ギャラリーを開いたとき（body.is-menu-open）だけ解除して写真をスクロールできるようにする */
-	body:not(.is-menu-open) {
+	/* ページ自体は常にスクロール禁止（スクロール操作は親ページへ素通し）。写真はギャラリー枠内の専用スクロールで見る */
+	html,
+	body {
 		overflow: hidden;
 		height: 100svh;
 	}
@@ -701,32 +701,40 @@ a:focus-visible {
 		padding: 60px 20px;
 	}
 
-	/* スクロールしてもCloseとExploreは画面に固定 */
+	/* ページは動かないのでabsoluteでも見た目は固定と同じ（固定要素ゼロ化でカクつき対策） */
 	.frame__close,
 	.js .frame__close.oh {
-		position: fixed;
+		position: absolute;
 		top: 60px;
 		right: 24px;
 	}
 
 	.galleries__button {
-		position: fixed; /* スクロールに追従 */
+		position: absolute;
 		width: 33.6vw; /* さらに1.2倍 */
 		height: 33.6vw;
-		top: 100px; /* 円の上端を「ホームページ」（1語目）の上端ラインに揃える */
+		top: calc(117px - 16.8vw); /* 円の中心を「ホームページ」（1語目）の行ラインに揃える */
 		left: 24px; /* 左端から24px */
+		z-index: 250;
 	}
 
 	.galleries {
-		height: auto;
-		min-height: 100vh;
-		min-height: 100svh;
+		height: 100vh;
+		height: 100svh;
 	}
 
+	/* ギャラリー本体を枠内スクロール領域にする（ページ自体は一切動かさない） */
 	.gallery--current {
-		position: relative;
-		height: auto;
-		padding: 215px 0 60px; /* 上部固定の2つの言葉（〜185px）の30px下から写真開始 */
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior: contain;
+		pointer-events: auto;
+		padding: 215px 0 60px; /* 上部の2つの言葉（〜185px）の30px下から写真開始 */
 	}
 
 
