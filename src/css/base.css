@@ -311,6 +311,11 @@ a:focus-visible {
 	animation-delay: 2.5s;
 }
 
+/* noanim=1 指定時は演出停止（切り分け用） */
+.no-hint-anim .menu-item::before {
+	animation: none;
+}
+
 /* ホバー中・選択中・メニュー表示中は演出を止める */
 .menu-item:hover::before,
 .menu-item--active::before,

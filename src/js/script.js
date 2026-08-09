@@ -481,6 +481,9 @@ const positionEnglishMobile = () => {
 window.addEventListener('resize', positionEnglishMobile);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(positionEnglishMobile);
 
+// 切り分け用：URLに noanim=1 が付いていたら下線ヒント演出を止める
+if (new URLSearchParams(location.search).has('noanim')) document.documentElement.classList.add('no-hint-anim');
+
 // initialize: 文章を1文字ずつ分割 → 画像読み込みを待つ → 開始
 splitQuoteToChars(document.querySelector('.content__quote'));
 preloadImages('.gallery__img').then(() => {
