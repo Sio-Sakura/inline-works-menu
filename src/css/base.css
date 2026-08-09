@@ -649,9 +649,10 @@ a:focus-visible {
 		position: absolute;
 	}
 
-	/* スマホだけ明るめのグレー（100%不透明）。ギャラリー表示中のみ出る要素なので固定（fixed）のまま画面手前に浮かせる */
+	/* スマホだけ明るめのグレー。カクつき対策でページ一体（absolute）に固定 */
 	.galleries__deco {
 		color: #5E5D5D;
+		position: absolute;
 	}
 
 	/* 540px以下だけ：本文の左右余白を24pxに */
