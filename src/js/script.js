@@ -453,7 +453,7 @@ class Menu {
 	}
 }
 
-// 540px以下のみ：英文を「日本語本文から上40px・下60px」の位置に自動配置
+// 540px以下のみ：英文を「日本語本文から上下40px」の位置に自動配置
 const positionEnglishMobile = () => {
 	const tag = document.querySelector('.frame__tagline');
 	const title = document.querySelector('.frame__title');
@@ -469,9 +469,9 @@ const positionEnglishMobile = () => {
 	tag.style.bottom = 'auto';
 	tag.style.top = q.top - 40 - tag.offsetHeight + 'px';
 	title.style.bottom = 'auto';
-	title.style.top = q.bottom + 60 + 'px';
+	title.style.top = q.bottom + 40 + "px";
 	credits.style.bottom = 'auto';
-	credits.style.top = q.bottom + 60 + title.offsetHeight + 8 + 'px';
+	credits.style.top = q.bottom + 40 + title.offsetHeight + 8 + "px";
 };
 window.addEventListener('resize', positionEnglishMobile);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(positionEnglishMobile);
