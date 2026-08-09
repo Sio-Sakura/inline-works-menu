@@ -649,10 +649,9 @@ a:focus-visible {
 		position: absolute;
 	}
 
-	/* スマホだけ明るめのグレー（100%不透明） */
+	/* スマホだけ明るめのグレー（100%不透明）。ギャラリー表示中のみ出る要素なので固定（fixed）のまま画面手前に浮かせる */
 	.galleries__deco {
 		color: #5E5D5D;
-		position: absolute;
 	}
 
 	/* 540px以下だけ：本文の左右余白を24pxに */
@@ -713,7 +712,7 @@ a:focus-visible {
 		position: fixed; /* スクロールに追従 */
 		width: 33.6vw; /* さらに1.2倍 */
 		height: 33.6vw;
-		top: calc(176px - 33.6vw); /* 円の下端をランディングページ（2語目）の下端ラインに揃える */
+		top: 100px; /* 円の上端を「ホームページ」（1語目）の上端ラインに揃える */
 		left: 24px; /* 左端から24px */
 	}
 
