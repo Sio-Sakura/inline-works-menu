@@ -145,6 +145,25 @@ class Menu {
 				y: (i, target) => this.menuTargetY(i, target)
 			});
 		});
+
+		// セクションが画面外に出たら（親ページのスクロールで離れたら）ギャラリーを自動で閉じて初期状態に戻す。
+		// 開きっぱなし＝ページが縦長のままだと、次に来たときスクロールが内側に取られてスタックするため
+		if ('IntersectionObserver' in window) {
+			const tryClose = () => {
+				if (!this.isMenuPage) return;
+				if (this.isAnimating) {
+					setTimeout(tryClose, 600);
+					return;
+				}
+				this.closeMenu();
+			};
+			const io = new IntersectionObserver(entries => {
+				entries.forEach(entry => {
+					if (!entry.isIntersecting) { if (winsize.width <= 540) tryClose(); }
+				});
+			}, { threshold: 0.05 });
+			io.observe(document.body);
+		}
 	}
 	// メニュー表示時の配置：画面中央下に横並び（言葉の間隔30px・画像に被らない下部エリア）
 	menuTargetX(index, target) {
