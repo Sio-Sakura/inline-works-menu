@@ -368,6 +368,7 @@ a:focus-visible {
 
 .galleries__deco {
 	position: fixed;
+	font-weight: 400; /* 細め（Loraイタリックの最細） */
 	bottom: 0; /* 全部見せる・下の隙間なし */
 	left: 0;
 	right: 0;
@@ -652,6 +653,7 @@ a:focus-visible {
 	/* スマホだけ明るめのグレー（100%不透明）。ギャラリー表示中のみ出る要素なので固定（fixed）のまま画面手前に浮かせる */
 	.galleries__deco {
 		color: #5E5D5D;
+		font-weight: 500; /* スマホは今の太さのまま */
 	}
 
 	/* 540px以下だけ：本文の左右余白を24pxに */
