@@ -381,8 +381,7 @@ a:focus-visible {
 }
 
 .galleries__deco-slash {
-	font-size: calc(7vw - 5px); /* スラッシュだけ5px小さく */
-	vertical-align: 10px; /* 10px持ち上げて下に隙間を作る（PC・タブレット） */
+	font-size: calc(7vw - 5px); /* 中黒だけ5px小さく */
 }
 
 /* 元デモのボタン（白い輪郭の大きな円＋"+ Explore"）を左上に配置 */
@@ -624,11 +623,6 @@ a:focus-visible {
 	/* スマホだけ明るめのグレー（100%不透明） */
 	.galleries__deco {
 		color: #5E5D5D;
-	}
-
-	/* スマホのスラッシュ持ち上げは5pxのまま */
-	.galleries__deco-slash {
-		vertical-align: 5px;
 	}
 
 	/* 540px以下だけ：本文の左右余白を24pxに */
