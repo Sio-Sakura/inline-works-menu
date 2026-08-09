@@ -429,7 +429,7 @@ class Menu {
 				{
 					duration: 0.1,
 					ease: 'expo.inOut',
-					opacity: 0.95, /* 写真は透明度95% */
+					opacity: 0.9, /* 写真は透明度90% */
 					x: '0%',
 					stagger: -0.08
 				},
