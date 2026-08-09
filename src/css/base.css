@@ -623,6 +623,13 @@ a:focus-visible {
 }
 
 @media screen and (max-width: 540px) {
+	/* 文章画面では内側スクロールを完全にロックして、スクロール操作を親ページ（STUDIO側）へ渡す。
+	   ギャラリーを開いたとき（body.is-menu-open）だけ解除して写真をスクロールできるようにする */
+	body:not(.is-menu-open) {
+		overflow: hidden;
+		height: 100svh;
+	}
+
 	/* スマホだけ：iframe内スクロールのカクつき対策で固定をやめてページ一体に */
 	.frame {
 		position: absolute;

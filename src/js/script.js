@@ -270,6 +270,9 @@ class Menu {
 		const startHint = document.querySelector('.menu-item--start');
 		if (startHint) startHint.classList.remove('menu-item--start');
 
+		// モバイル：ギャラリー表示中だけ内側スクロールを許可（文章画面はロックして親ページへスクロールを渡す）
+		document.body.classList.add('is-menu-open');
+
 		const clickedMenuItemIndex = this.DOM.menuItems.indexOf(ev.target);
 
 		// return if currently animating or if the clicked menu item is the current selected one
@@ -304,6 +307,8 @@ class Menu {
 	closeMenu() {
 		if (this.isAnimating) return;
 		this.isAnimating = true;
+
+		document.body.classList.remove('is-menu-open');
 
 		// モバイル：スクロール位置を先頭に戻してから、固定を解除して滑らかに戻す
 		if (winsize.width <= 540) {
