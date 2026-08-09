@@ -367,7 +367,7 @@ a:focus-visible {
 	left: 0;
 	right: 0;
 	text-align: center; /* 中央配置（GSAPがtransformを使うのでleft/rightで中央化） */
-	color: rgba(94, 93, 93, 0.6); /* #5E5D5Dの透明度60% */
+	color: var(--color-deco); /* PC・タブレットは元の暗い色 */
 	font-size: 7vw;
 	text-transform: uppercase;
 	white-space: nowrap;
@@ -382,6 +382,7 @@ a:focus-visible {
 
 .galleries__deco-slash {
 	font-size: calc(7vw - 3px); /* スラッシュだけ3px小さく */
+	vertical-align: 5px; /* 5px持ち上げて下に隙間を作り、上下を英文の高さに収める */
 }
 
 /* 元デモのボタン（白い輪郭の大きな円＋"+ Explore"）を左上に配置 */
@@ -620,6 +621,11 @@ a:focus-visible {
 }
 
 @media screen and (max-width: 540px) {
+	/* スマホだけ明るめのグレー（100%不透明） */
+	.galleries__deco {
+		color: #5E5D5D;
+	}
+
 	/* 540px以下だけ：本文の左右余白を24pxに */
 	.content {
 		padding: 52px 24px;
