@@ -713,7 +713,7 @@ a:focus-visible {
 		position: fixed; /* スクロールに追従 */
 		width: 33.6vw; /* さらに1.2倍 */
 		height: 33.6vw;
-		top: calc(235px - 33.6vw); /* 円の下端が写真の先頭に20pxかぶる */
+		top: calc(176px - 33.6vw); /* 円の下端をランディングページ（2語目）の下端ラインに揃える */
 		left: 24px; /* 左端から24px */
 	}
 
