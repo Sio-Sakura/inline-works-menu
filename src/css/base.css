@@ -381,7 +381,7 @@ a:focus-visible {
 }
 
 .galleries__deco-slash {
-	font-size: calc(7vw - 3px); /* スラッシュだけ3px小さく */
+	font-size: calc(7vw - 5px); /* スラッシュだけ5px小さく */
 	vertical-align: 5px; /* 5px持ち上げて下に隙間を作り、上下を英文の高さに収める */
 }
 
