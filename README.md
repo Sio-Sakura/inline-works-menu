@@ -6,7 +6,7 @@ designbyshio.com のホームに埋め込む「文章内キーワード → 実�
 
 ## Based on
 
-This is a modified version of ["Inline to Menu Link Animation"](https://github.com/codrops/InlineToMenuLink) by [Codrops](https://tympanus.net/codrops) (Manoela Ilic), released under the MIT License.
+This is a modified version of ["Inline to Menu Link Animation"](https://github.com/codrops/InlineToMenuLink) by [Codrops](https://tympanus.net/codrops) (Manoela Ilic), released under the MIT License. Original concept by [Matthew Hall](https://dribbble.com/mattkombo).
 
 Main modifications:
 
